@@ -115,9 +115,10 @@ Ejercicios
 	  >Vemos que el nivel de silencio es de -45 dB en media, en cambio el nivel de voz es de -20 dB aproximadamente. Por tanto el incremento que se produce es de 25 dB.
 
 	* Duración mínima razonable de los segmentos de voz y silencio.
+	  >El segmento de silencio más corto que tenemos es de 0.182 segundos. El segmento más corto de voz es de 0.790 segundos.
 
 	* ¿Es capaz de sacar alguna conclusión a partir de la evolución de la tasa de cruces por cero?
-
+	>En el fragmento de audio grabado tenemos fonemas fricativos sordos: f (**F**uentes) y c (ha**c**iendo), y vemos 2 picos significativos en la gráfica de cruces por cero. 
 
 ### Desarrollo del detector de actividad vocal
 
