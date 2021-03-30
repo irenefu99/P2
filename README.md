@@ -112,6 +112,7 @@ Ejercicios
 
 	* Incremento del nivel potencia en dB, respecto al nivel correspondiente al silencio inicial, para
 	  estar seguros de que un segmento de señal se corresponde con voz.
+	  >Vemos que el nivel de silencio es de -45 dB en media, en cambio el nivel de voz es de -20 dB aproximadamente. Por tanto el incremento que se produce es de 25 dB.
 
 	* Duración mínima razonable de los segmentos de voz y silencio.
 
