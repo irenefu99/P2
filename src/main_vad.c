@@ -75,7 +75,7 @@ int main(int argc, char *argv[]) {
   frame_duration = (float) frame_size/ (float) sf_info.samplerate;
   last_state = ST_UNDEF;
   last_state_merge=ST_SILENCE;
-  
+
   for (t = last_t = 0; ; t++) { /* For each frame ... */
     /* End loop when file has finished (or there is an error) */
     if  ((n_read = sf_read_float(sndfile_in, buffer, frame_size)) != frame_size) break;
@@ -89,26 +89,28 @@ int main(int argc, char *argv[]) {
       vad_show_state(vad_data, stdout);
 
     /* TODO: print only SILENCE and VOICE labels */
-    if((state==ST_VOICE||state==ST_SILENCE) && (last_state==ST_MAYBEVOICE || last_state==ST_MAYBESILENCE))
-      last_state=state;
-
-    if((state==ST_MAYBEVOICE || state==ST_MAYBESILENCE ) && (last_state==ST_SILENCE ||last_state==ST_VOICE)){
+    
+    if((last_state_merge!=state) &&(state==ST_MAYBEVOICE || state==ST_MAYBESILENCE ) && (last_state==ST_SILENCE ||last_state==ST_VOICE)){
       last_state_merge=last_state;
       time=t;
     }
+    
 
     /* As it is, it prints UNDEF segments but is should be merge to the proper value */
     if (state != last_state) {
-      if (t != last_t)
-        fprintf(vadfile, "%.5f\t%.5f\t%s\n", last_t * frame_duration, time * frame_duration, state2str(last_state_merge));
-      last_state = state;
-      last_t = time;
+      if (t != last_t){
+        if((last_state_merge!=state) && (state==ST_VOICE||state==ST_SILENCE) && (last_state==ST_MAYBEVOICE || last_state==ST_MAYBESILENCE)){
+          fprintf(vadfile, "%.5f\t%.5f\t%s\n", last_t * frame_duration, time * frame_duration, state2str(last_state_merge));
+          last_state_merge = state;
+          last_t=time;
+        }
+        last_state=state;
+      }
     }
 
     if (sndfile_out != 0) {
       /* TODO: go back and write zeros in silence segments */
     }
-  //last_state=state;
   }
 
   state = vad_close(vad_data);
