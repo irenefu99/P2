@@ -64,6 +64,7 @@ VAD_DATA * vad_open(float rate,float alfa0) {
   vad_data->sampling_rate = rate;
   vad_data->frame_length = rate * FRAME_TIME * 1e-3;
   vad_data->aux=0;
+  vad_data->last_state=ST_UNDEF; //inicializamos estado indefinido
   return vad_data;
 }
 
@@ -113,6 +114,7 @@ VAD_STATE vad(VAD_DATA *vad_data, float *x) {
       vad_data->k2=vad_data->k1+ALFA2; 
       vad_data->state = ST_SILENCE;
     }
+    vad_data->last_state=ST_INIT;
     break;
 
   case ST_SILENCE: //fp es la potencia de la trama
@@ -120,6 +122,7 @@ VAD_STATE vad(VAD_DATA *vad_data, float *x) {
       vad_data->state = ST_MAYBEVOICE;
       vad_data->voice=1; //cuento que tengo una trama en voz
     }
+     vad_data->last_state=ST_SILENCE;
     break;
 
   case ST_VOICE:
@@ -127,6 +130,7 @@ VAD_STATE vad(VAD_DATA *vad_data, float *x) {
       vad_data->state = ST_MAYBESILENCE;
       vad_data->silence=1; //cuento que tengo una trama en silencio
     }
+     vad_data->last_state=ST_VOICE;
     break;
 
   case ST_MAYBESILENCE:
@@ -138,7 +142,9 @@ VAD_STATE vad(VAD_DATA *vad_data, float *x) {
     }
    if(vad_data->silence>CONTSILENCE)
       vad_data->state=ST_SILENCE;
-   
+   vad_data->last_state=ST_MAYBESILENCE;
+   break;
+
   case ST_MAYBEVOICE:
    if(f.p< vad_data->k1)
       vad_data->state=ST_SILENCE;
@@ -148,6 +154,8 @@ VAD_STATE vad(VAD_DATA *vad_data, float *x) {
     }
    if(vad_data->voice>CONTVOICE)
       vad_data->state=ST_VOICE;
+    vad_data->last_state=ST_MAYBEVOICE;
+  break;
 
   case ST_UNDEF:
     break;

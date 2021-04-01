@@ -12,7 +12,7 @@ const char *state2str(VAD_STATE st);
    (counts, thresholds, etc.) */
 
 typedef struct {
-  VAD_STATE state;
+  VAD_STATE state,last_state;
   float sampling_rate,k0,k1,k2,alfa0;
   unsigned int silence, voice; //calcular las tramas que estamos en silencio o en voz para determinar si es maybe o si es de verdad
   unsigned int frame_length,aux; //Ninit numero de tramas para calcular k0
