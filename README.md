@@ -104,9 +104,9 @@ Ejercicios
 - Etiquete manualmente los segmentos de voz y silencio del fichero grabado al efecto. Inserte, a 
   continuación, una captura de `wavesurfer` en la que se vea con claridad la señal temporal, el contorno de
   potencia y la tasa de cruces por cero, junto con el etiquetado manual de los segmentos.
-![image](https://user-images.githubusercontent.com/79308448/113008686-89904000-9177-11eb-8fce-6362728bccde.png)
-	>Primeramente hemos etiquetado manualmente los segmentos de voz y silencio de la grabación de la práctica 1. Su transcripción es: "Laura Las Heras Irene Fuentes. Buenos días. Estamos haciendo la práctica 1 de PAV". 
-	>Con los algoritmos realizados en la práctica 1, hemos podido calcular el contorno de potencia y la tasa de cruces por cero. Aquí podemos ver primeramente la tasa de cruces por cero, seguido de la señal temporal y por último el contorno de potencia. 
+![image](https://user-images.githubusercontent.com/79308448/113405676-7e712600-93aa-11eb-9f89-b3eca5b96907.png)
+	>Primeramente hemos etiquetado manualmente los segmentos de voz y silencio de una grabación. Su transcripción es: "Laura Las Heras Irene Fuentes. Práctica 2 de PAV". 
+	>Con los algoritmos realizados en la práctica 1, hemos podido calcular el contorno de potencia y la tasa de cruces por cero. Aquí podemos ver primeramente la tasa de cruces por cero, el contorno de potencia y por último la señal temporal. 
 
 - A la vista de la gráfica, indique qué valores considera adecuados para las magnitudes siguientes:
 
@@ -115,15 +115,16 @@ Ejercicios
 	  >Vemos que el nivel de silencio es de -45 dB en media, en cambio el nivel de voz es de -20 dB aproximadamente. Por tanto el incremento que se produce es de 25 dB.
 
 	* Duración mínima razonable de los segmentos de voz y silencio.
-	  >El segmento de silencio más corto que tenemos es de 0.182 segundos. El segmento más corto de voz es de 0.790 segundos.
+	  >El segmento de silencio más corto que tenemos es de 0.100 segundos. El segmento más corto de voz es de 0.364 segundos.
 
 	* ¿Es capaz de sacar alguna conclusión a partir de la evolución de la tasa de cruces por cero?
-	>En el fragmento de audio grabado tenemos fonemas fricativos sordos: f (**F**uentes) y c (ha**c**iendo), y vemos 2 picos significativos en la gráfica de cruces por cero. 
+	>En el fragmento de audio grabado tenemos fonemas fricativos sordos: como por ejemplo f (**F**uentes), y vemos picos significativos en la gráfica de cruces por cero 	      cuando tenemos fonemas de este tipo. 
 
 ### Desarrollo del detector de actividad vocal
 
 - Complete el código de los ficheros de la práctica para implementar un detector de actividad vocal tan
   exacto como sea posible. Tome como objetivo la maximización de la puntuación-F `TOTAL`.
+  
 
 - Inserte una gráfica en la que se vea con claridad la señal temporal, el etiquetado manual y la detección
   automática conseguida para el fichero grabado al efecto. 
@@ -134,6 +135,7 @@ Ejercicios
 - Evalúe los resultados sobre la base de datos `db.v4` con el script `vad_evaluation.pl` e inserte a 
   continuación las tasas de sensibilidad (*recall*) y precisión para el conjunto de la base de datos (sólo
   el resumen).
+![image](https://user-images.githubusercontent.com/79308448/113406202-5df59b80-93ab-11eb-920d-01fe50dbae26.png)
 
 
 ### Trabajos de ampliación
