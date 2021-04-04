@@ -139,7 +139,8 @@ Ejercicios
   continuación las tasas de sensibilidad (*recall*) y precisión para el conjunto de la base de datos (sólo
   el resumen).
 ![image](https://user-images.githubusercontent.com/79308448/113406202-5df59b80-93ab-11eb-920d-01fe50dbae26.png)
-
+ >La tasa de recall que obtenemos es de 87,58% para la voz y 91,74% para el silencio.
+ >La tasa de precisión que obtenemos es de 93,73% para la voz y 83,98% para el silencio.
 
 ### Trabajos de ampliación
 
