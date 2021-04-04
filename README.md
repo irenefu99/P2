@@ -155,7 +155,8 @@ Ejercicios
 
 - Si ha usado `docopt_c` para realizar la gestión de las opciones y argumentos del programa `vad`, inserte
   una captura de pantalla en la que se vea el mensaje de ayuda del programa.
-
+![image](https://user-images.githubusercontent.com/79308448/113513921-284be080-956c-11eb-8879-95190861a4a3.png)
+>Hemos añadido variables que creemos útiles a la hora de realizar el programa en el docopt.
 
 ### Contribuciones adicionales y/o comentarios acerca de la práctica
 
