@@ -15,7 +15,7 @@ int main(int argc, char *argv[]) {
   SF_INFO sf_info;
   FILE *vadfile;
   int n_read = 0, i;
-
+  int alfa1, alfa2, ncont, contsilencio, contvoz;
   VAD_DATA *vad_data;
   VAD_STATE state, last_state,last_state_merge;
 
@@ -27,8 +27,11 @@ int main(int argc, char *argv[]) {
   char	*input_wav, *output_vad, *output_wav;
 
   DocoptArgs args = docopt(argc, argv, /* help */ 1, /* version */ "2.0");
-  float alfa0=atof(args.alfa0);
-  
+  alfa1 = atoi(args.alfa1);
+  alfa2 = atoi(args.alfa2);
+  ncont = atoi(args.ninit);
+  contsilencio = atoi(args.contsilence);
+  contvoz = atoi(args.contvoice);
   verbose    = args.verbose ? DEBUG_VAD : 0;
   input_wav  = args.input_wav;
   output_vad = args.output_vad;
@@ -65,7 +68,7 @@ int main(int argc, char *argv[]) {
     }
   }
 
-  vad_data = vad_open(sf_info.samplerate,alfa0);
+  vad_data = vad_open(sf_info.samplerate,alfa1,alfa2,contvoz,contsilencio,ncont);
   /* Allocate memory for buffers */
   frame_size   = vad_frame_size(vad_data);
   buffer       = (float *) malloc(frame_size * sizeof(float));

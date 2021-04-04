@@ -13,8 +13,9 @@ const char *state2str(VAD_STATE st);
 
 typedef struct {
   VAD_STATE state,last_state;
-  float sampling_rate,k0,k1,k2,alfa0;
-  unsigned int silence, voice; //calcular las tramas que estamos en silencio o en voz para determinar si es maybe o si es de verdad
+  float sampling_rate,k0,k1,k2;
+  int alpha1, alpha2, ncont, contvoz,contsilencio;
+  unsigned int voice, silence; //calcular las tramas que estamos en silencio o en voz para determinar si es maybe o si es de verdad
   unsigned int frame_length,aux; //Ninit numero de tramas para calcular k0
   float last_feature; /* for debuggin purposes */
 } VAD_DATA;
@@ -23,7 +24,7 @@ typedef struct {
    It should return allocated and initialized values of vad_data
 
    sampling_rate: ... the sampling rate */
-VAD_DATA *vad_open(float sampling_rate,float alfa0);
+VAD_DATA *vad_open(float sampling_rate,int alfa1,int alfa2, int contvoice, int contsilence, int ninit);
 
 /* vad works frame by frame.
    This function returns the frame size so that the program knows how
