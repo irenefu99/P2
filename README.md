@@ -141,6 +141,7 @@ Ejercicios
 ![image](https://user-images.githubusercontent.com/79308448/113406202-5df59b80-93ab-11eb-920d-01fe50dbae26.png)
  >La tasa de recall que obtenemos es de 87,58% para la voz y 91,74% para el silencio.
  >La tasa de precisión que obtenemos es de 93,73% para la voz y 83,98% para el silencio.
+ >Creemos que los valores obtenidos son suficientes para determinar que tenemos un sistema correcto, aunque siempre se podría mejorar. 
 
 ### Trabajos de ampliación
 
