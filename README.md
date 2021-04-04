@@ -124,14 +124,17 @@ Ejercicios
 
 - Complete el código de los ficheros de la práctica para implementar un detector de actividad vocal tan
   exacto como sea posible. Tome como objetivo la maximización de la puntuación-F `TOTAL`.
-  
+
 
 - Inserte una gráfica en la que se vea con claridad la señal temporal, el etiquetado manual y la detección
   automática conseguida para el fichero grabado al efecto. 
-
+![image](https://user-images.githubusercontent.com/79308448/113512089-5973e300-9563-11eb-9831-4b0c4fa839f9.png)
+ >Primeramente observamos el etiquetado manual realizado y a continuación el que realiza el programa.
 
 - Explique, si existen. las discrepancias entre el etiquetado manual y la detección automática.
-
+ >Vemos que el programa tiene mucha precisión, ya que nos detecta un silencio que no habíamos etiquetado porque lo considerábamos demasiado corto pero sí existe. Por otro lado, los sonidos sordos, especialmente la **"s"** de Hera**s** y de Fuente**s** no la acaba de detectar completamente como voz porque la señal tiene una potencia muy similar al nivel de ruido, y entonces el programa lo detecta como silencio. Esto se debe a los niveles de umbrales k0, k1 y k2 que hemos considerado para realizar el detector de voz.
+ 
+ 
 - Evalúe los resultados sobre la base de datos `db.v4` con el script `vad_evaluation.pl` e inserte a 
   continuación las tasas de sensibilidad (*recall*) y precisión para el conjunto de la base de datos (sólo
   el resumen).
