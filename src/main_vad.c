@@ -15,6 +15,7 @@ int main(int argc, char *argv[]) {
   SF_INFO sf_info;
   FILE *vadfile;
   int n_read = 0, i;
+  int n_write = 0;
   int alfa1, alfa2, ncont, contsilencio, contvoz;
   VAD_DATA *vad_data;
   VAD_STATE state, last_state,last_state_merge;
@@ -98,7 +99,6 @@ int main(int argc, char *argv[]) {
       time=t;
     }
     
-
     /* As it is, it prints UNDEF segments but is should be merge to the proper value */
     if (state != last_state) {
       if (t != last_t){
@@ -107,13 +107,19 @@ int main(int argc, char *argv[]) {
           last_state_merge = state;
           last_t=time;
         }
-        last_state=state;
       }
     }
 
     if (sndfile_out != 0) {
       /* TODO: go back and write zeros in silence segments */
+     if(last_state==ST_SILENCE){
+        n_write=sf_write_float(sndfile_out,buffer_zeros,frame_size);
+      }
+      else{
+        n_write=sf_write_float(sndfile_out,buffer,frame_size);
+      }
     }
+    last_state=state;
   }
 
   state = vad_close(vad_data);
